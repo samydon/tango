@@ -22,10 +22,10 @@ from sshtunnel import SSHTunnelForwarder
 
 
 ssh_tunnel = SSHTunnelForwarder (
-    ('bastion.oooall.com',22),
+    ('',22),
     ssh_username="ec2-user",
-    ssh_pkey="/Users/samjinkim/Documents/oooall_bastion.pem",
-    remote_bind_address=('oooall-db.c2w4be7rtxdi.ap-northeast-2.rds.amazonaws.com',3306)
+    ssh_pkey="",
+    remote_bind_address=('',3306)
 ) 
 
 print('터널링 준비')
@@ -37,7 +37,7 @@ print('터널링 시작')
 
 
     
-engine = create_engine('mysql+mysqldb://admin:admin12#$@oooall-db.c2w4be7rtxdi.ap-northeast-2.rds.amazonaws.com:%s/apitest' % ssh_tunnel.local_bind_port)
+engine = create_engine('mysql+mysqldb://:a@oßs.amazonaws.com:%s/apitest' % ssh_tunnel.local_bind_port)
 
 
 

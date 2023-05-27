@@ -1,0 +1,16 @@
+fastapi
+pydantic
+PyMySQL
+python-dotenv
+python-jose
+python-multipart
+SQLAlchemy
+starlette
+uvicorn
+uvloop
+gunicorn
+httptools
+python-multipart
+python-dotenv
+jose
+PyJWT

@@ -8,7 +8,7 @@ import api
 
 
 app = FastAPI(
-         title='Tongonet Project',
+         title='Tangonet Project',
             description='This is sample code for NGINX Plus  by samjin kim',
             openapi_url='/tango/app/openapi.json'
 )

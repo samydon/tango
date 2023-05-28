@@ -11,6 +11,7 @@ import hashlib
 from datetime import datetime
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from typing import Annotated
+from sqlalchemy import and_, or_
 
 #OAuth Form
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="v1/jwt/token")
@@ -35,14 +36,22 @@ async def add_user(userId: str,userName: str, nickName:str, email:str, phone:str
 
 @router.get("/list2", response_model= List[schemas.user])
 async def get_user_list(token: Annotated[str, Depends(oauth2_scheme)],userid:str=None,username:str=None,db: Session = Depends(get_db)):
-        return list(db.query(models.User).filter_by(userId=userid))
-
+        print(f'nuser id:{userid}')
+        if userid == None and username == None:
+            return list(db.query(models.User).all())
+        else:
+            return list(db.query(models.User()).filter(userId == userid, userName.like(f'%{username}%')).first())
+            
 
 #반환형식이 리스트일 경우 1개여도 오류발생이 인되게
 @router.get("/list", response_model= List[schemas.user])
 async def get_user_list(userid:str=None,username:str=None,db: Session = Depends(get_db)):
 
-    return list(db.query(models.User).filter_by(userId=userid))
+    if userid == None and username == None:
+        return list(db.query(models.User).all())
+    else:
+        return list(db.query(models.User).filter(userId == userid, userName.like(f'%{username}%')).first())
+            
       
    # return db.query(models.User).all()
 

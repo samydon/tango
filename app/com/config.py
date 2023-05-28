@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     DB_NAME: str
     JWT_KEY: SecretStr    
     TOKEN_EXPIRE_MINUTES: int
+    KEY_ID:str
 
     TESTING = False
 

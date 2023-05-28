@@ -28,10 +28,7 @@ ssh_tunnel = SSHTunnelForwarder (
     remote_bind_address=('',3306)
 ) 
 
-print('터널링 준비')
 ssh_tunnel.start()
-
-print('터널링 시작')
 
 #engine = create_engine('mysql+pymysql://admin:admin12#$@oooall-db.c2w4be7rtxdi.ap-northeast-2.rds.amazonaws.com:'+str(ssh_tunnel.local_bind_port)+'/apitest')
 
@@ -41,7 +38,6 @@ engine = create_engine('mysql+mysqldb://:a@oßs.amazonaws.com:%s/apitest' % ssh_
 
 
 
-print('db 연결 완료')
 
 SessionLocal = sessionmaker(
     bind=engine,

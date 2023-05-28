@@ -12,6 +12,7 @@ class Settings(BaseSettings):
     DB_PORT: int
     DB_NAME: str
     JWT_KEY: SecretStr    
+    TOKEN_EXPIRE_MINUTES: int
 
     TESTING = False
 

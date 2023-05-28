@@ -1,14 +1,21 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+
 import os
 import api
 
 
-app = FastAPI()
+
+app = FastAPI(
+         title='Tongonet Project',
+            description='This is sample code for NGINX Plus  by samjin kim',
+            openapi_url='/tango/app/openapi.json'
+)
+
 #app.add_middleware(
 #    CORSMiddleware,
-#    allow_origins={"https://fcquiz.azurewebsites.net", "http://localhost"},
+#    allow_origins={"https://.net", "http://localhost"},
 #    allow_credentials=True,
 #    allow_methods={"OPTIONS", "GET", "POST"},
 #    allow_headers={"*"},

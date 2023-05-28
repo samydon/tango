@@ -35,3 +35,7 @@ class UserCreate(BaseModel):
     email:str = Field(...,title="이메일",example="sample@example.com")
     phone:str = Field(...,title="핸드폰",example="010-0000-0000")
     grade:int = Field(...,title="등급")
+    
+class Token(BaseModel):
+    access_token: str
+    token_type: str

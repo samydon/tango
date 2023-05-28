@@ -15,7 +15,7 @@ class user(BaseModel):
     userId: str
     userName: str
     nickName: str
-    email: str
+    email:str
     phone:str
     grade:int
     class Config:

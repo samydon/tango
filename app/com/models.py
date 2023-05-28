@@ -21,9 +21,9 @@ class User(BaseMixin, database.Base):
     userId = Column(String(20))
     userName = Column(String(45))
     nickName = Column(String(50))
-    email = Column(String(45), default="")
-    phone = Column(String(45), default="")
-    grade = Column(Integer(),default=1)
+    email = Column(String(45), default=None)
+    phone = Column(String(45), default=None)
+    grade = Column(Integer(),  default=None)
 
     #quiz = relationship("Quiz", back_populates="current_users", uselist=False)
 

@@ -32,7 +32,7 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
         expire = datetime.utcnow() + timedelta(minutes=settings.TOKEN_EXPIRE_MINUTES)
     to_encode.update({"exp": expire})
     print(to_encode)
-    additional_headers = {'kid': '0001'}
+    additional_headers = {"alg":"HS256", "typ":"JWT",'kid': '0001'}
     encoded_jwt = jwt.encode(to_encode, settings.JWT_KEY.get_secret_value(),headers=additional_headers, algorithm="HS256")
     return encoded_jwt
 

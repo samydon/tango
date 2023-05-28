@@ -35,22 +35,22 @@ async def add_user(userId: str,userName: str, nickName:str, email:str, phone:str
 
 
 @router.get("/list2", response_model= List[schemas.user])
-async def get_user_list(token: Annotated[str, Depends(oauth2_scheme)],userid:str=None,username:str=None,db: Session = Depends(get_db)):
+async def get_user_list(token: Annotated[str, Depends(oauth2_scheme)],userid:str="",username:str="",db: Session = Depends(get_db)):
         print(f'nuser id:{userid}')
         if userid == None and username == None:
             return list(db.query(models.User).all())
         else:
-            return list(db.query(models.User()).filter(userId == userid, userName.like(f'%{username}%')).first())
-            
+            return list(db.query(models.User).filter(models.User.userId.like(f'%{userid}%'),models.User.userName.like(f'%{username}%')).all())
+        
 
 #반환형식이 리스트일 경우 1개여도 오류발생이 인되게
 @router.get("/list", response_model= List[schemas.user])
-async def get_user_list(userid:str=None,username:str=None,db: Session = Depends(get_db)):
+async def get_user_list(userid:str="",username:str="",db: Session = Depends(get_db)):
 
     if userid == None and username == None:
         return list(db.query(models.User).all())
     else:
-        return list(db.query(models.User).filter(userId == userid, userName.like(f'%{username}%')).first())
+        return list(db.query(models.User).filter(models.User.userId.like(f'%{userid}%'),models.User.userName.like(f'%{username}%')).all())
             
       
    # return db.query(models.User).all()

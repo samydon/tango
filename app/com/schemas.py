@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-
+from typing import Optional
 
 
 
@@ -15,9 +15,9 @@ class user(BaseModel):
     userId: str
     userName: str
     nickName: str
-    email:str
-    phone:str
-    grade:int
+    email: Optional[str]
+    phone: Optional[str]
+    grade: Optional[int]
     class Config:
         orm_mode = True
 

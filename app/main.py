@@ -31,6 +31,7 @@ async def startup_event():
 
 #print(os.path.dirname(__file__)) 
 
+
 @app.get("/")
 async def healthcheck():
  

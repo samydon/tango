@@ -1,10 +1,9 @@
-import os
-
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-#from sshtunnel import SSHTunnelForwarder
-from .config   import settings
+
+# from sshtunnel import SSHTunnelForwarder
+from .config import settings
 
 engine = create_engine(
     "mysql+pymysql://{username}:{password}@{host}:{port}/{name}?charset=utf8mb4".format(
@@ -13,13 +12,9 @@ engine = create_engine(
         host=settings.DB_HOST,
         port=settings.DB_PORT,
         name=settings.DB_NAME,
-   )
+    ),
+    echo=True,
 )
-#engine = create_engine(f'mysql+pymysql://{settings.DB_USERNAME}:{settings.DB_PASSWORD}@{settings.DB_HOST}:{settings.DB_PORT}/{settings.DB_NAME}')
-
-#engine = create_engine('mysql+pymysql://root:admin12#$@0.0.0.0:3306/sampleapi')
-
-
 
 SessionLocal = sessionmaker(
     bind=engine,
@@ -36,4 +31,3 @@ def get_db():
         yield db
     finally:
         db.close()
-        

@@ -23,8 +23,7 @@ class user(BaseModel):
 
 class ResponseUsr(BaseModel):
     userId: str
-    userName: str
-    
+    userName: str    
     class Config:
         orm_mode = True
 

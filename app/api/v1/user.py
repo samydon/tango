@@ -63,7 +63,7 @@ async def add_user_json(data: schemas.UserCreate, db: Session = Depends(get_db))
 
 @router.post("/form", response_model=schemas.ResponseUsr, status_code=status.HTTP_201_CREATED)
 async def add_user_redirect(    
-    userId: str = Form(..., title="사용자아이디"),
+    userId:   str = Form(..., title="사용자아이디"),
     userName: str = Form(..., title="사용자이름"),
     nickName: str = Form(..., title="별명"),
     email:str = Form(default=None, title="이메일"),
